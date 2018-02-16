@@ -15,6 +15,7 @@ import org.testng.annotations.AfterClass;
 //import utilities.GenericMethods;
 import pageobjects.HomePageFactory;
 import pageobjects.SuggestedJobsPageFactory;
+import pageobjects.ResultsPageFactory;
 
 public class NewTest {
 	private WebDriver driver;
@@ -23,6 +24,7 @@ public class NewTest {
 	String parentHandle;
 	HomePageFactory homePage;
 	SuggestedJobsPageFactory suggestedJobs;
+	ResultsPageFactory resultsPage;
 	
 	
 	@BeforeClass
@@ -36,6 +38,7 @@ public class NewTest {
 		
 		homePage = new HomePageFactory(driver);
 		suggestedJobs = new SuggestedJobsPageFactory(driver);
+		resultsPage = new ResultsPageFactory(driver);
 		
 		driver.manage().window().maximize();
 		System.out.println("Maximize browser");
@@ -68,6 +71,10 @@ public class NewTest {
 			homePage.location_sendKeys("Bolingbrook, IL");
 			homePage.search_click();
 		}
+		
+		resultsPage.waitForSearchButton(15);
+		System.out.println("Results Page Loaded");
+		
 	}
 	
 	
